@@ -11,3 +11,16 @@ C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Projeto N1\Main\o
 C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Projeto N1\Main\obj\Debug\Main.exe
 C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Projeto N1\Main\obj\Debug\Main.pdb
 C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Projeto N1\Main\obj\Debug\Main.Form1.resources
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.csproj.AssemblyReference.cache
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.csproj.SuggestedBindingRedirects.cache
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.Form1.resources
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.Properties.Resources.resources
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.csproj.GenerateResource.cache
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.exe
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.pdb
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\bin\Debug\Main.exe.config
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\bin\Debug\Main.exe
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\bin\Debug\Main.pdb
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\bin\Debug\MaterialSkin.dll
+C:\Users\install\Documents\FCT Colgaia\11°Ano\Estágio Samsys Desafios\Main\obj\Debug\Main.csproj.CopyComplete
