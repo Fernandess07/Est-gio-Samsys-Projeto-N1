@@ -15,6 +15,11 @@ namespace Main
 {
     public partial class Form1 : MaterialForm
     {
+
+        SqlCommandBuilder scb;
+        SqlDataAdapter adpt;
+        DataTable dt;
+        SqlConnection con = new SqlConnection(@"Data Source=PTFERNANDES\SQLEXPRESS;Initial Catalog=Produtos;Integrated Security=True");
         public Form1()
         {
             InitializeComponent();
@@ -22,10 +27,6 @@ namespace Main
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber600, Primary.BlueGrey900, Primary.BlueGrey900, Accent.Amber700, TextShade.WHITE);
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace Main
                                     string msg = "O/A " + materialTextBox24.Text + " de ID N°" + materialTextBox21.Text + " da marca " + materialTextBox22.Text + " foi adicionado ao sistema com o valor de " + materialTextBox23.Text + "€";
                                     MessageBox.Show(msg);
                                     Enviar();
+                                    ins();
                                     Limpar();
                                 }
                             }
@@ -96,23 +98,59 @@ namespace Main
                 {
                     return false;
                 }
-                
             }
             else
             {
                 return false;
             }
-            
         }
         private void Enviar()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=PTFERNANDES\SQLEXPRESS;Initial Catalog=Produtos;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand(@"INSERT INTO[dbo].[Produtos] ([ID],[NOME],[MARCA],[PRECO]) VALUES ('" + materialTextBox21.Text + "', '" + materialTextBox24.Text + "', '" + materialTextBox23.Text + "', '" + materialTextBox22.Text + "€')", con);
+            SqlCommand cmd = new SqlCommand(@"INSERT INTO[dbo].[Produtos] ([ID],[NOME],[MARCA],[PRECO]) VALUES ('" + materialTextBox21.Text + "', '" + materialTextBox24.Text + "', '" + materialTextBox22.Text + "', '" + materialTextBox23.Text + "€')", con);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+            
+        }
+        private void ins()
+        {
+            
+            adpt = new SqlDataAdapter("select * from Produtos", con);
+            dt = new DataTable();
+            adpt.Fill(dt);
+            produtosDataGridView.DataSource = dt;
         }
 
+        private void materialTextBox21_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void materialTabControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            ins();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: esta linha de código carrega dados na tabela 'produtosDataSet.Produtos'. Você pode movê-la ou removê-la conforme necessário.
+            this.produtosTableAdapter.Fill(this.produtosDataSet.Produtos);
+            ins();
+        }
     }
 }
