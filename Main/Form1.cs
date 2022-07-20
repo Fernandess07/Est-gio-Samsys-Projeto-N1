@@ -40,16 +40,6 @@ namespace Main
             {
                 return;
             }
-            if (IDexistente() != "")
-            {
-                MessageBox.Show(IDexistente());
-                return;
-            }
-            if(VerificarID() != "")
-            {
-                MessageBox.Show(VerificarID());
-                return;
-            }
             if (VerificarPreco() != "")
             {
                 MessageBox.Show(VerificarPreco());
@@ -67,15 +57,13 @@ namespace Main
             }
             else
             {
-                MessageBox.Show("O/A " + txtNome.Text.Trim() + " de ID N°" + txtID.Text.Trim() + " da marca " + txtMarca.Text.Trim() + " foi adicionado ao sistema com o valor de " + txtPreco.Text.Trim() + "€");
+                MessageBox.Show("O/A " + txtNome.Text.Trim() + " da marca " + txtMarca.Text.Trim() + " foi adicionado ao sistema com o valor de " + txtPreco.Text.Trim() + "€");
                 Limpar();
-                
             }
         }
 
         private void Limpar()
         {
-            txtID.Text = "";
             txtMarca.Text = "";
             txtPreco.Text = "";
             txtNome.Text = "";
@@ -83,7 +71,7 @@ namespace Main
 
         private bool verificartextBoxes()
         {
-            if (txtID.Text.Trim() == "" && txtMarca.Text.Trim() == "" && txtPreco.Text.Trim() == "" && txtNome.Text.Trim() == "")
+            if (txtMarca.Text.Trim() == "" && txtPreco.Text.Trim() == "" && txtNome.Text.Trim() == "")
             {
                 return false;
             }
@@ -104,11 +92,10 @@ namespace Main
                 con.Open();
                 //Adicionar os Valores aos Campos
                 cmd.Connection = con;
-                cmd.CommandText = "INSERT INTO Produtos (ID,NOME,MARCA,PRECO)Values(@id,@nome,@marca,@preco)";
-                cmd.Parameters.AddWithValue("@ID", txtID.Text);
+                cmd.CommandText = "INSERT INTO Produtos (NOME,MARCA,PRECO)Values(@nome,@marca,@preco)";
                 cmd.Parameters.AddWithValue("@nome", txtNome.Text);
                 cmd.Parameters.AddWithValue("@marca", txtMarca.Text);
-                cmd.Parameters.AddWithValue("@preco", txtPreco.Text);
+                cmd.Parameters.AddWithValue("@preco", txtPreco.Text + "€");
                 cmd.ExecuteNonQuery();
                 con.Close();
                 return "";
@@ -116,6 +103,7 @@ namespace Main
             }
             catch
             {
+                con.Close();
                 return "Não foi possivel Enviar os Dados";
             }
         }
@@ -143,47 +131,8 @@ namespace Main
         private void Form1_Load(object sender, EventArgs e)
         {
             MostrarDados();
-            AutoID();
-        }
-        private string IDexistente()
-        {
-            try { 
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Select ID from Produtos where ID='" + txtID.Text + "'", con);
-            string CHK = (string)cmd.ExecuteScalar();
-                if (CHK == txtID.Text)
-                {
-                    con.Close();
-                    return "O ID já está a ser utilizado.";
-                }
-                else
-                {
-                    con.Close();
-                    return "";
-                }
-            }
-            catch 
-            {
-                return "Não foi possivel ligar à base de dados.";
-            }
         }
 
-        private string VerificarID()
-        {
-            try
-            {
-                int i = Convert.ToInt32(txtID.Text);
-                if (i < 0)
-                {
-                    return "ID não pode ser negativo";
-                }
-                return "";
-            }
-            catch
-            {
-                return "O ID Inválido.";
-            }
-        }
 
         private string VerificarPreco()
         {
@@ -213,11 +162,18 @@ namespace Main
                 string nome = row.Cells["dataGridViewTextBoxColumn2"].Value.ToString();
                 string marca = row.Cells["dataGridViewTextBoxColumn3"].Value.ToString();
                 string preco = row.Cells["dataGridViewTextBoxColumn4"].Value.ToString();
+                if(VerificarCelulas(nome,marca,preco)!= "")
+                {
+                    MessageBox.Show(VerificarCelulas(nome,marca,preco));
+                    return;
+                }
                 if(Update(nome, marca, preco, id) != "")
                 {
                     MessageBox.Show(Update(nome, marca, preco, id));
+                    MostrarDados();
                     return;
                 }
+                
                 
             }
             else if (e.ColumnIndex == 4 && e.RowIndex > -1)
@@ -230,6 +186,7 @@ namespace Main
                 }
                 int d = e.RowIndex;
                 string id = row.Cells["dataGridViewTextBoxColumn1"].Value.ToString();
+
                 if(Eliminar(id) != "")
                 {
                     MessageBox.Show(Eliminar(id));
@@ -293,28 +250,49 @@ namespace Main
                 e.Handled = true;
             }
         }
-        private int AutoID()
+
+        private void produtosDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            try { 
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Select count(ID) from Produtos");
-            int i = Convert.ToInt32(cmd.ExecuteScalar());
-            con.Close();
-            i++;
-            txtID.Text = i.ToString();
-            return 1;
-            }
-            catch
+            if (produtosDataGridView.CurrentCell.ColumnIndex == 3)
             {
-                return 0;
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(dataGridViewTextBoxColumn4_KeyPress);
+                }
             }
-
         }
-
-
-        private void txtNome_Click(object sender, EventArgs e)
+        private void dataGridViewTextBoxColumn4_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void produtosDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.produtosDataGridView.Rows[e.RowIndex];
+            string preco = row.Cells["dataGridViewTextBoxColumn4"].Value.ToString();
+            if (preco.EndsWith("€") == false)
+            {
+                row.Cells["dataGridViewTextBoxColumn4"].Value = preco + "€";
+            }
+        }
+        private string VerificarCelulas(string nome, string marca, string preco)
+        {
+            if (nome.Trim() == "")
+            {
+                return "Introduza o Nome do Produto";
+            }
+            if (marca.Trim() == "")
+            {
+                return "Introduza o marca do Produto";
+            }
+            if (preco.Remove(preco.Length - 1) == "")
+            {
+                return "Introduza o marca do Produto";
+            }
+            return "";
         }
     }
 }

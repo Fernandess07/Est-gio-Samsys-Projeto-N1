@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.produtosDataSet = new Main.ProdutosDataSet();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,7 +45,6 @@
             this.Eleminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Atualizar = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtID = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.button1 = new System.Windows.Forms.Button();
             this.txtMarca = new MaterialSkin.Controls.MaterialTextBox2();
@@ -107,14 +106,14 @@
             this.produtosDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.produtosDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.produtosDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.produtosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.produtosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.produtosDataGridView.ColumnHeadersHeight = 29;
             this.produtosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.produtosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -125,14 +124,14 @@
             this.Eleminar,
             this.Atualizar});
             this.produtosDataGridView.DataSource = this.produtosBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.produtosDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.produtosDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.produtosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.produtosDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.produtosDataGridView.Location = new System.Drawing.Point(3, 3);
@@ -142,6 +141,8 @@
             this.produtosDataGridView.Size = new System.Drawing.Size(1014, 419);
             this.produtosDataGridView.TabIndex = 0;
             this.produtosDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.produtosDataGridView_CellContentClick);
+            this.produtosDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.produtosDataGridView_CellEndEdit);
+            this.produtosDataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.produtosDataGridView_EditingControlShowing);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -192,7 +193,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.txtID);
             this.tabPage1.Controls.Add(this.materialButton1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.txtMarca);
@@ -207,37 +207,6 @@
             this.tabPage1.Text = "Inserir Dados";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // txtID
-            // 
-            this.txtID.AnimateReadOnly = false;
-            this.txtID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtID.Depth = 0;
-            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtID.HideSelection = true;
-            this.txtID.Hint = "ID";
-            this.txtID.LeadingIcon = null;
-            this.txtID.Location = new System.Drawing.Point(58, 54);
-            this.txtID.MaxLength = 50;
-            this.txtID.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtID.Name = "txtID";
-            this.txtID.PasswordChar = '\0';
-            this.txtID.PrefixSuffix = MaterialSkin.Controls.MaterialTextBox2.PrefixSuffixTypes.Prefix;
-            this.txtID.PrefixSuffixText = null;
-            this.txtID.ReadOnly = false;
-            this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtID.SelectedText = "";
-            this.txtID.SelectionLength = 0;
-            this.txtID.SelectionStart = 0;
-            this.txtID.ShortcutsEnabled = true;
-            this.txtID.Size = new System.Drawing.Size(233, 48);
-            this.txtID.TabIndex = 0;
-            this.txtID.TabStop = false;
-            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtID.TrailingIcon = null;
-            this.txtID.UseSystemPasswordChar = false;
-            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
-            // 
             // materialButton1
             // 
             this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -245,7 +214,7 @@
             this.materialButton1.Depth = 0;
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(566, 258);
+            this.materialButton1.Location = new System.Drawing.Point(368, 258);
             this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
@@ -266,7 +235,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(751, 258);
+            this.button1.Location = new System.Drawing.Point(526, 254);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 45);
             this.button1.TabIndex = 5;
@@ -283,7 +252,7 @@
             this.txtMarca.HideSelection = true;
             this.txtMarca.Hint = "Marca";
             this.txtMarca.LeadingIcon = null;
-            this.txtMarca.Location = new System.Drawing.Point(566, 173);
+            this.txtMarca.Location = new System.Drawing.Point(81, 246);
             this.txtMarca.MaxLength = 50;
             this.txtMarca.MouseState = MaterialSkin.MouseState.OUT;
             this.txtMarca.Name = "txtMarca";
@@ -313,7 +282,7 @@
             this.txtPreco.HideSelection = true;
             this.txtPreco.Hint = "Preço";
             this.txtPreco.LeadingIcon = null;
-            this.txtPreco.Location = new System.Drawing.Point(58, 173);
+            this.txtPreco.Location = new System.Drawing.Point(81, 143);
             this.txtPreco.MaxLength = 50;
             this.txtPreco.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPreco.Name = "txtPreco";
@@ -344,7 +313,7 @@
             this.txtNome.HideSelection = true;
             this.txtNome.Hint = "Nome";
             this.txtNome.LeadingIcon = null;
-            this.txtNome.Location = new System.Drawing.Point(566, 54);
+            this.txtNome.Location = new System.Drawing.Point(81, 40);
             this.txtNome.MaxLength = 50;
             this.txtNome.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNome.Name = "txtNome";
@@ -363,7 +332,6 @@
             this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNome.TrailingIcon = null;
             this.txtNome.UseSystemPasswordChar = false;
-            this.txtNome.Click += new System.EventHandler(this.txtNome_Click);
             // 
             // materialTabControl1
             // 
@@ -417,7 +385,7 @@
             this.Name = "Form1";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Desafio 4";
+            this.Text = "Desafio 5";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.produtosDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
@@ -438,7 +406,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView produtosDataGridView;
         private System.Windows.Forms.TabPage tabPage1;
-        private MaterialSkin.Controls.MaterialTextBox2 txtID;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private System.Windows.Forms.Button button1;
         private MaterialSkin.Controls.MaterialTextBox2 txtMarca;
